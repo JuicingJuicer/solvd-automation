@@ -3,10 +3,8 @@ package com.solvd.qa.carina.block4;
 import com.solvd.qa.carina.block4.api.GetToDoMethod;
 import com.solvd.qa.carina.block4.api.PatchToDoMethod;
 import com.solvd.qa.carina.block4.api.PostToDoMethod;
-import com.solvd.qa.carina.demo.api.GetUserMethods;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.core.IAbstractTest;
-import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import io.restassured.response.Response;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
@@ -18,6 +16,7 @@ import java.lang.invoke.MethodHandles;
 public class APITest implements IAbstractTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
     @Test()
     public void testGetTodos() {
         GetToDoMethod api = new GetToDoMethod();
@@ -29,7 +28,7 @@ public class APITest implements IAbstractTest {
     }
 
     @Test()
-    public void testCreateToDo() throws Exception{
+    public void testCreateToDo() {
         PostToDoMethod api = new PostToDoMethod();
         api.setProperties("api/todos/todo.properties");
 
@@ -39,7 +38,7 @@ public class APITest implements IAbstractTest {
     }
 
     @Test()
-    public void testCreateToDoMissingSomeField() throws Exception{
+    public void testCreateToDoMissingSomeField() {
         PostToDoMethod api = new PostToDoMethod();
         api.setProperties("api/todos/todo.properties");
         api.getProperties().remove("title");
@@ -50,7 +49,7 @@ public class APITest implements IAbstractTest {
     }
 
     @Test()
-    public void testPatchToDo() throws Exception{
+    public void testPatchToDo() {
         PostToDoMethod api = new PostToDoMethod();
         api.setProperties("api/todos/todo.properties");
         PatchToDoMethod api2 = new PatchToDoMethod();

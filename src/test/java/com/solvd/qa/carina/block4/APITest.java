@@ -57,8 +57,12 @@ public class APITest implements IAbstractTest {
         api2.setProperties("api/todos/todo.properties");
 
         Response response = api.callAPIExpectSuccess();
+        LOGGER.info("Old: " + response.jsonPath().getString("0.title"));
+        api.validateResponse();
 
-
+        api2.addProperty("completed", "true");
+        Response response2 = api2.callAPIExpectSuccess();
+        LOGGER.info("New: " + response2.jsonPath().getString("title"));
         api2.validateResponse();
     }
 }

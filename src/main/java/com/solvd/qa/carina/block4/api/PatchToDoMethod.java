@@ -9,7 +9,7 @@ import com.zebrunner.carina.api.http.HttpMethodType;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.utils.config.Configuration;
 
-@Endpoint(url = "${base_url}/todos", methodType = HttpMethodType.PATCH)
+@Endpoint(url = "${base_url}/todos/201", methodType = HttpMethodType.PATCH)
 @RequestTemplatePath(path = "api/todos/_patch/rq.json")
 @ResponseTemplatePath(path = "api/todos/_patch/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)

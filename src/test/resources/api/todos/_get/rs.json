@@ -1,9 +1,9 @@
 [
   {
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
+    "userId": "regex:[\\d]",
+    "id": "regex:[\\d]",
+    "title": "regex:[a-zA-Z\\d]+",
+    "completed": "type:Boolean"
   },
   {
     "userId": 1,

@@ -1,9 +1,6 @@
 {
-  "0": {
-    "userId": 11,
-    "id": 201,
-    <#if title??>"title": "${title}",</#if>
-    "completed": true
-  },
-  "id": 201
+  "userId": "regex:[\\d]",
+  "id": "regex:[\\d]",
+  "title": "regex:[a-zA-Z\\d]+",
+  "completed": false
 }

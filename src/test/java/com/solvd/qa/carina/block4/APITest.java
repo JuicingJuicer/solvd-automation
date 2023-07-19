@@ -62,7 +62,7 @@ public class APITest implements IAbstractTest {
         String id = response.jsonPath().getString("id");
 
         // pass in id and call PATCH to update todo
-        api2.replaceUrlPlaceholder("int", id);
+        api2.replaceUrlPlaceholder("id", id);
         Response response2 = api2.callAPIExpectSuccess();
         LOGGER.info("New: " + response2.jsonPath().getString("title"));
         api2.validateResponse();

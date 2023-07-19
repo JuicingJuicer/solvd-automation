@@ -15,8 +15,4 @@ import com.zebrunner.carina.api.http.HttpResponseStatusType;
 public class PatchToDoMethod extends AbstractApiMethodV2 {
     public PatchToDoMethod() {
     }
-
-    public void replaceId(int id) {
-        replaceUrlPlaceholder("int", String.valueOf(id));
-    }
 }

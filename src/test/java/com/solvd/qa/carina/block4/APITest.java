@@ -59,11 +59,10 @@ public class APITest implements IAbstractTest {
         // call POST to create todo and get id of todo
         Response response = api.callAPIExpectSuccess();
         LOGGER.info("Old: " + response.jsonPath().getString("0.title"));
-        int id = response.jsonPath().getInt("id");
-        api.validateResponse();
+        String id = response.jsonPath().getString("id");
 
         // pass in id and call PATCH to update todo
-        api2.replaceId(id);
+        api2.replaceUrlPlaceholder("int", id);
         Response response2 = api2.callAPIExpectSuccess();
         LOGGER.info("New: " + response2.jsonPath().getString("title"));
         api2.validateResponse();

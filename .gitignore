@@ -30,3 +30,4 @@ replay_pid*
 .properties
 /target/
 .idea
+reports/

@@ -50,16 +50,20 @@ public class APITest implements IAbstractTest {
 
     @Test()
     public void testPatchToDo() {
+        // preparation
         PostToDoMethod api = new PostToDoMethod();
         api.setProperties("api/todos/todo.properties");
         PatchToDoMethod api2 = new PatchToDoMethod();
         api2.setProperties("api/todos/todo.properties");
 
+        // call POST to create todo and get id of todo
         Response response = api.callAPIExpectSuccess();
         LOGGER.info("Old: " + response.jsonPath().getString("0.title"));
+        int id = response.jsonPath().getInt("id");
         api.validateResponse();
 
-        api2.addProperty("completed", "true");
+        // pass in id and call PATCH to update todo
+        api2.replaceId(id);
         Response response2 = api2.callAPIExpectSuccess();
         LOGGER.info("New: " + response2.jsonPath().getString("title"));
         api2.validateResponse();

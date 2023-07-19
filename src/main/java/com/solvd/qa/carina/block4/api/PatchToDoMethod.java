@@ -7,12 +7,16 @@ import com.zebrunner.carina.api.annotation.ResponseTemplatePath;
 import com.zebrunner.carina.api.annotation.SuccessfulHttpStatus;
 import com.zebrunner.carina.api.http.HttpMethodType;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
-import com.zebrunner.carina.utils.config.Configuration;
 
-@Endpoint(url = "${base_url}/todos/201", methodType = HttpMethodType.PATCH)
+@Endpoint(url = "${config.env.api_url}/todos/${int}", methodType = HttpMethodType.PATCH)
 @RequestTemplatePath(path = "api/todos/_patch/rq.json")
 @ResponseTemplatePath(path = "api/todos/_patch/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
 public class PatchToDoMethod extends AbstractApiMethodV2 {
-    public PatchToDoMethod() { replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));}
+    public PatchToDoMethod() {
+    }
+
+    public void replaceId(int id) {
+        replaceUrlPlaceholder("int", String.valueOf(id));
+    }
 }

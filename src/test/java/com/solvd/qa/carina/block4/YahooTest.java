@@ -42,9 +42,9 @@ public class YahooTest implements IAbstractTest {
         homePage = barbie.goHome();
         YahooMovieSearchPage oppenheimer = homePage.searchOppenheimer();
 
-        softAssert.assertEquals(barbie.readTitle(), "Oppenheimer (film)", "Invalid title");
-        softAssert.assertEquals(barbie.readReleaseDate(), "Release date: July 21, 2023", "Invalid release date");
-        softAssert.assertEquals(barbie.readDirector(), "Christopher Nolan", "Invalid director");
+        softAssert.assertEquals(oppenheimer.readTitle(), "Oppenheimer (film)", "Invalid title");
+        softAssert.assertEquals(oppenheimer.readReleaseDate(), "Release date: July 21, 2023", "Invalid release date");
+        softAssert.assertEquals(oppenheimer.readDirector(), "Christopher Nolan", "Invalid director");
 
         softAssert.assertAll();
     }

@@ -26,18 +26,18 @@ public class HeaderMenu extends HeaderMenuBase {
     @Override
     public YahooNewsPage openNewsPage() {
         newsLink.click();
-        return new YahooNewsPage(driver, "https://news.yahoo.com/");
+        return new YahooNewsPage(driver);
     }
 
     @Override
     public YahooEntertainmentPage openEntertainmentPage() {
         entertainnmentLink.click();
-        return new YahooEntertainmentPage(driver, "/entertainment/");
+        return new YahooEntertainmentPage(driver);
     }
 
     @Override
     public YahooLifePage openLifePage() {
         lifeLink.click();
-        return new YahooLifePage(driver, "/lifestyle/");
+        return new YahooLifePage(driver);
     }
 }

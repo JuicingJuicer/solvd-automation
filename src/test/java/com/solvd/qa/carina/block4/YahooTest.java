@@ -68,5 +68,29 @@ public class YahooTest implements IAbstractTest {
 
         YahooLifePage lifePage = entertainmentPage.getHeaderMenu().openLifePage();
         Assert.assertTrue(lifePage.isPageOpened(), "Life page is not opened.");
+
+        newsPage = lifePage.getHeaderMenu().openNewsPage();
+        Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened");
+    }
+
+    @Test
+    @TestPriority(Priority.P3)
+    public void testLanguageSwitch() {
+        YahooHomePage homePage = new YahooHomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+
+        YahooProductServicePage productServicePage = homePage.openProductService();
+        Assert.assertTrue(productServicePage.isPageOpened(), "Product and Service page is not opened");
+
+        YahooInternationalPage internationalPage = productServicePage.openInternationalPage();
+        Assert.assertTrue(internationalPage.isPageOpened(), "International page is not opened");
+
+        YahooFranceHomePage franceHomePage = internationalPage.openFrancePage();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(franceHomePage.isPageOpened(), "France page is not opened");
+        softAssert.assertEquals(franceHomePage.getTrendingNowInFrench(), "Tendances du jour", "Wrong language");
+        
+        softAssert.assertAll();
     }
 }

@@ -13,11 +13,7 @@ public class YahooEntertainmentPage extends YahooEntertainmentBase {
 
     public YahooEntertainmentPage(WebDriver driver) {
         super(driver);
-    }
-
-    public YahooEntertainmentPage(WebDriver driver, String path) {
-        super(driver);
-        setPageURL(path);
+        setPageURL("/entertainment/");
     }
 
     @Override

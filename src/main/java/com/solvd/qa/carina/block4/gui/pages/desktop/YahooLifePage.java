@@ -13,11 +13,7 @@ public class YahooLifePage extends YahooLifeBase {
 
     public YahooLifePage(WebDriver driver) {
         super(driver);
-    }
-
-    public YahooLifePage(WebDriver driver, String path) {
-        super(driver);
-        setPageURL(path);
+        setPageURL("/lifestyle/");
     }
 
     @Override

@@ -22,6 +22,9 @@ public class YahooHomePage extends YahooHomeBase {
     @FindBy(xpath = "//*[@id=\"root_2\"]")
     private ExtendedWebElement newsLink;
 
+    @FindBy(xpath = "//a[@id=\"root_8\"]")
+    private ExtendedWebElement productServiceLink;
+
     public YahooHomePage(WebDriver driver) {
         super(driver);
     }
@@ -53,6 +56,11 @@ public class YahooHomePage extends YahooHomeBase {
     @Override
     public YahooNewsPage openNews() {
         newsLink.click();
-        return new YahooNewsPage(driver, "https://news.yahoo.com/");
+        return new YahooNewsPage(driver);
+    }
+
+    public YahooProductServicePage openProductService() {
+        productServiceLink.click();
+        return new YahooProductServicePage(driver);
     }
 }

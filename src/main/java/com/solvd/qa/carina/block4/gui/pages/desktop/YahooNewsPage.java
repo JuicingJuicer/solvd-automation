@@ -12,11 +12,7 @@ public class YahooNewsPage extends YahooNewsBase {
 
     public YahooNewsPage(WebDriver driver) {
         super(driver);
-    }
-
-    public YahooNewsPage(WebDriver driver, String path) {
-        super(driver);
-        setPageAbsoluteURL(path);
+        setPageAbsoluteURL("https://news.yahoo.com/");
     }
 
     @Override

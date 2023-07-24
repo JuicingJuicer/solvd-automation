@@ -1,8 +1,6 @@
 package com.solvd.qa.carina.block4;
 
-import com.solvd.qa.carina.block4.gui.pages.desktop.YahooHomePage;
-import com.solvd.qa.carina.block4.gui.pages.desktop.YahooMovieSearchPage;
-import com.solvd.qa.carina.block4.gui.pages.desktop.YahooWeatherPage;
+import com.solvd.qa.carina.block4.gui.pages.desktop.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.tag.Priority;
 import com.zebrunner.carina.core.registrar.tag.TestPriority;
@@ -53,5 +51,22 @@ public class YahooTest implements IAbstractTest {
         softAssert.assertEquals(moviePage.readDirector(), director, "Invalid director");
 
         softAssert.assertAll();
+    }
+
+    @Test
+    @TestPriority(Priority.P3)
+    public void testHeaderPages() {
+        YahooHomePage homePage = new YahooHomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+
+        YahooNewsPage newsPage = homePage.openNews();
+        Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened");
+
+        YahooEntertainmentPage entertainmentPage = newsPage.getHeaderMenu().openEntertainmentPage();
+        Assert.assertTrue(entertainmentPage.isPageOpened(), "Entertainment page is not opened.");
+
+        YahooLifePage lifePage = entertainmentPage.getHeaderMenu().openLifePage();
+        Assert.assertTrue(lifePage.isPageOpened(), "Life page is not opened.");
     }
 }

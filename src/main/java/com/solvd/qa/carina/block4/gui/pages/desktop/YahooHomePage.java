@@ -19,6 +19,9 @@ public class YahooHomePage extends YahooHomeBase {
     @FindBy(xpath = "//div[@id='ybar-search-box-container']//button[@type='submit']")
     private ExtendedWebElement searchButton;
 
+    @FindBy(xpath = "//*[@id=\"root_2\"]")
+    private ExtendedWebElement newsLink;
+
     public YahooHomePage(WebDriver driver) {
         super(driver);
     }
@@ -45,5 +48,11 @@ public class YahooHomePage extends YahooHomeBase {
     public YahooMovieSearchPage searchMovie(String search) {
         search(search);
         return new YahooMovieSearchPage(driver);
+    }
+
+    @Override
+    public YahooNewsPage openNews() {
+        newsLink.click();
+        return new YahooNewsPage(driver, "https://news.yahoo.com/");
     }
 }

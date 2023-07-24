@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class YahooHomePage extends YahooHomeBase {
 
     @FindBy(xpath = "//div[@class='weather-card-content Pos(r)']/a")
-    private ExtendedWebElement SeeMoreWeatherButton;
+    private ExtendedWebElement seeMoreWeatherButton;
 
     @FindBy(xpath = ".//div[@id='module-weather']//h4")
     private ExtendedWebElement weatherCity;
@@ -25,8 +25,7 @@ public class YahooHomePage extends YahooHomeBase {
 
     @Override
     public YahooWeatherPage openWeather() {
-        SeeMoreWeatherButton.hover();
-        SeeMoreWeatherButton.click();
+        seeMoreWeatherButton.click();
         return new YahooWeatherPage(driver);
     }
 
@@ -37,22 +36,14 @@ public class YahooHomePage extends YahooHomeBase {
 
     @Override
     public void search(String prompt) {
-        searchBar.hover();
         searchBar.click();
         searchBar.type(prompt);
-        searchButton.hover();
         searchButton.click();
     }
 
     @Override
-    public YahooMovieSearchPage searchBarbie() {
-        search("barbie movie");
-        return new YahooMovieSearchPage(driver);
-    }
-
-    @Override
-    public YahooMovieSearchPage searchOppenheimer() {
-        search("oppenheimer movie");
+    public YahooMovieSearchPage searchMovie(String search) {
+        search(search);
         return new YahooMovieSearchPage(driver);
     }
 }

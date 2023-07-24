@@ -43,9 +43,7 @@ public class YahooMovieSearchPage extends YahooMovieSearchBase {
 
     @Override
     public YahooHomePage goHome() {
-        yahooSites.hover();
         yahooSites.click();
-        homeButton.hover();
         homeButton.click();
         return new YahooHomePage(driver);
     }

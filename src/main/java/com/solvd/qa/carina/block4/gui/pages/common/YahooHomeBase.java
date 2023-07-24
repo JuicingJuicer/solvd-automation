@@ -15,7 +15,5 @@ public abstract class YahooHomeBase extends AbstractPage {
 
     public abstract void search(String prompt);
 
-    public abstract YahooMovieSearchPage searchBarbie();
-
-    public abstract YahooMovieSearchPage searchOppenheimer();
+    public abstract YahooMovieSearchPage searchMovie(String search);
 }

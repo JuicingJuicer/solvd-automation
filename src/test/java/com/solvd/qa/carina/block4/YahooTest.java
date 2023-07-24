@@ -6,13 +6,26 @@ import com.solvd.qa.carina.block4.gui.pages.desktop.YahooWeatherPage;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.tag.Priority;
 import com.zebrunner.carina.core.registrar.tag.TestPriority;
+import com.zebrunner.carina.utils.R;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
 
 public class YahooTest implements IAbstractTest {
+
+    @DataProvider(name = "movieDetails")
+    public static Object[][] dataProvider() {
+        return new Object[][]
+                {
+                        {R.TESTDATA.get("barbie.search"), R.TESTDATA.get("barbie.title"), R.TESTDATA.get("barbie.date"), R.TESTDATA.get("barbie.director")},
+                        {R.TESTDATA.get("oppenheimer.search"), R.TESTDATA.get("oppenheimer.title"), R.TESTDATA.get("oppenheimer.date"), R.TESTDATA.get("oppenheimer.director")},
+                        {R.TESTDATA.get("sof.search"), R.TESTDATA.get("sof.title"), R.TESTDATA.get("sof.date"), R.TESTDATA.get("sof.director")}
+                };
+    }
+
     @Test
     @TestPriority(Priority.P3)
     public void testCityWeather() {
@@ -26,25 +39,18 @@ public class YahooTest implements IAbstractTest {
         assertEquals(homeCity, weatherPage.readCity(), "Invalid city!");
     }
 
-    @Test
+    @Test(dataProvider = "movieDetails")
     @TestPriority(Priority.P3)
-    public void testBarbOpp() {
+    public void testMovieSearch(String search, String title, String date, String director) {
         YahooHomePage homePage = new YahooHomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-        YahooMovieSearchPage barbie = homePage.searchBarbie();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(barbie.readTitle(), "Barbie (film)", "Invalid title");
-        softAssert.assertEquals(barbie.readReleaseDate(), "Release date: July 21, 2023", "Invalid release date");
-        softAssert.assertEquals(barbie.readDirector(), "Greta Gerwig", "Invalid director");
-
-        homePage = barbie.goHome();
-        YahooMovieSearchPage oppenheimer = homePage.searchOppenheimer();
-
-        softAssert.assertEquals(oppenheimer.readTitle(), "Oppenheimer (film)", "Invalid title");
-        softAssert.assertEquals(oppenheimer.readReleaseDate(), "Release date: July 21, 2023", "Invalid release date");
-        softAssert.assertEquals(oppenheimer.readDirector(), "Christopher Nolan", "Invalid director");
+        YahooMovieSearchPage moviePage = homePage.searchMovie(search);
+        softAssert.assertEquals(moviePage.readTitle(), title, "Invalid title");
+        softAssert.assertEquals(moviePage.readReleaseDate(), date, "Invalid release date");
+        softAssert.assertEquals(moviePage.readDirector(), director, "Invalid director");
 
         softAssert.assertAll();
     }

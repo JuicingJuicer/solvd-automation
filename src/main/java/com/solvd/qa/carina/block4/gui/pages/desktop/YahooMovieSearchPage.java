@@ -1,11 +1,11 @@
 package com.solvd.qa.carina.block4.gui.pages.desktop;
 
-import com.solvd.qa.carina.block4.gui.pages.common.YahooMovieSearchBase;
+import com.solvd.qa.carina.block4.gui.pages.common.YahooMovieSearchPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class YahooMovieSearchPage extends YahooMovieSearchBase {
+public class YahooMovieSearchPage extends YahooMovieSearchPageBase {
 
     @FindBy(xpath = "//h4[@class='text-module u-strong ']")
     private ExtendedWebElement title;

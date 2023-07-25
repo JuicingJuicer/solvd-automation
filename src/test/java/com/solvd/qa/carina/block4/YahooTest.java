@@ -29,7 +29,7 @@ public class YahooTest implements IAbstractTest {
     public void testCityWeather() {
         YahooHomePage homePage = new YahooHomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
         String homeCity = homePage.getWeatherCity();
 
@@ -42,55 +42,72 @@ public class YahooTest implements IAbstractTest {
     public void testMovieSearch(String search, String title, String date, String director) {
         YahooHomePage homePage = new YahooHomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
         SoftAssert softAssert = new SoftAssert();
         YahooMovieSearchPage moviePage = homePage.searchMovie(search);
-        softAssert.assertEquals(moviePage.readTitle(), title, "Invalid title");
-        softAssert.assertEquals(moviePage.readReleaseDate(), date, "Invalid release date");
-        softAssert.assertEquals(moviePage.readDirector(), director, "Invalid director");
+        softAssert.assertEquals(moviePage.readTitle(), title, "Invalid title!");
+        softAssert.assertEquals(moviePage.readReleaseDate(), date, "Invalid release date!");
+        softAssert.assertEquals(moviePage.readDirector(), director, "Invalid director!");
 
         softAssert.assertAll();
     }
 
     @Test
     @TestPriority(Priority.P3)
-    public void testHeaderPages() {
+    public void testHoroscope() {
         YahooHomePage homePage = new YahooHomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
 
-        YahooNewsPage newsPage = homePage.openNews();
-        Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened");
-
-        YahooEntertainmentPage entertainmentPage = newsPage.getHeaderMenu().openEntertainmentPage();
-        Assert.assertTrue(entertainmentPage.isPageOpened(), "Entertainment page is not opened.");
+        YahooEntertainmentPage entertainmentPage = homePage.openEntertainment();
+        Assert.assertTrue(entertainmentPage.isPageOpened(), "Entertainment page is not opened!");
+        String dailyHoroscope = entertainmentPage.getHoroscopeMenu().readSelectedHoroscope();
 
         YahooLifePage lifePage = entertainmentPage.getHeaderMenu().openLifePage();
         Assert.assertTrue(lifePage.isPageOpened(), "Life page is not opened.");
-
-        newsPage = lifePage.getHeaderMenu().openNewsPage();
-        Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened");
+        assertEquals(dailyHoroscope, lifePage.getHoroscopeMenu().readSelectedHoroscope(), "Mismatching Horoscopes!");
     }
 
     @Test
     @TestPriority(Priority.P3)
-    public void testLanguageSwitch() {
+    public void testCountrySwitch() {
+        YahooHomePage homePage = new YahooHomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
+
+        YahooProductServicePage productServicePage = homePage.openProductService();
+        Assert.assertTrue(productServicePage.isPageOpened(), "Product and Service page is not opened!");
+
+        YahooInternationalPage internationalPage = productServicePage.openInternationalPage();
+        Assert.assertTrue(internationalPage.isPageOpened(), "International page is not opened!");
+
+        YahooFranceHomePage franceHomePage = internationalPage.openFrancePage();
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(franceHomePage.isPageOpened(), "France homepage is not opened!");
+        softAssert.assertEquals(franceHomePage.getTrendingNowInFrench(), "Tendances du jour", "Wrong language!");
+
+        softAssert.assertAll();
+    }
+
+    @Test
+    @TestPriority(Priority.P3)
+    public void testCryptoInfo() {
         YahooHomePage homePage = new YahooHomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-        YahooProductServicePage productServicePage = homePage.openProductService();
-        Assert.assertTrue(productServicePage.isPageOpened(), "Product and Service page is not opened");
+        YahooFinancePage financePage = homePage.openFinance();
+        Assert.assertTrue(financePage.isPageOpened(), "Finance page is not opened");
 
-        YahooInternationalPage internationalPage = productServicePage.openInternationalPage();
-        Assert.assertTrue(internationalPage.isPageOpened(), "International page is not opened");
+        YahooCryptoPage cryptoPage = financePage.openCrypto();
+        Assert.assertTrue(cryptoPage.isPageOpened(), "Crypto page is not opened");
 
-        YahooFranceHomePage franceHomePage = internationalPage.openFrancePage();
+        YahooCryptoQuotePage cryptoQuotePage = cryptoPage.searchCrypto("DOGE-USD");
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(franceHomePage.isPageOpened(), "France page is not opened");
-        softAssert.assertEquals(franceHomePage.getTrendingNowInFrench(), "Tendances du jour", "Wrong language");
-        
+        softAssert.assertEquals(cryptoQuotePage.readName(), "Dogecoin USD (DOGE-USD)", "Crypto name is wrong!");
+        softAssert.assertEquals(cryptoQuotePage.readDate(), "2013-12-15", "Crypto date is wrong!");
+
         softAssert.assertAll();
     }
 }

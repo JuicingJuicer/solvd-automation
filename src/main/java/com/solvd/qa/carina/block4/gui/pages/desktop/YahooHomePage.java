@@ -1,11 +1,11 @@
 package com.solvd.qa.carina.block4.gui.pages.desktop;
 
-import com.solvd.qa.carina.block4.gui.pages.common.YahooHomeBase;
+import com.solvd.qa.carina.block4.gui.pages.common.YahooHomePageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class YahooHomePage extends YahooHomeBase {
+public class YahooHomePage extends YahooHomePageBase {
 
     @FindBy(xpath = "//div[@class='weather-card-content Pos(r)']/a")
     private ExtendedWebElement seeMoreWeatherButton;
@@ -19,11 +19,15 @@ public class YahooHomePage extends YahooHomeBase {
     @FindBy(xpath = "//div[@id='ybar-search-box-container']//button[@type='submit']")
     private ExtendedWebElement searchButton;
 
-    @FindBy(xpath = "//*[@id=\"root_2\"]")
-    private ExtendedWebElement newsLink;
-
     @FindBy(xpath = "//a[@id=\"root_8\"]")
     private ExtendedWebElement productServiceLink;
+
+    @FindBy(xpath = "//*[@id=\"root_3\"]")
+    private ExtendedWebElement financeLink;
+
+    //*[@id="root_5"]
+    @FindBy(xpath = "//*[@id=\"root_5\"]")
+    private ExtendedWebElement entertainmentLink;
 
     public YahooHomePage(WebDriver driver) {
         super(driver);
@@ -54,13 +58,20 @@ public class YahooHomePage extends YahooHomeBase {
     }
 
     @Override
-    public YahooNewsPage openNews() {
-        newsLink.click();
-        return new YahooNewsPage(driver);
-    }
-
     public YahooProductServicePage openProductService() {
         productServiceLink.click();
         return new YahooProductServicePage(driver);
+    }
+
+    @Override
+    public YahooFinancePage openFinance() {
+        financeLink.click();
+        return new YahooFinancePage(driver);
+    }
+
+    @Override
+    public YahooEntertainmentPage openEntertainment() {
+        entertainmentLink.click();
+        return new YahooEntertainmentPage(driver);
     }
 }

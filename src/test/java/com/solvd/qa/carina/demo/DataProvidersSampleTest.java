@@ -1,15 +1,14 @@
 package com.solvd.qa.carina.demo;
 
+import com.zebrunner.carina.core.IAbstractTest;
+import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.core.registrar.tag.Priority;
+import com.zebrunner.carina.core.registrar.tag.TestPriority;
+import com.zebrunner.carina.core.report.testrail.TestRailCases;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import com.zebrunner.carina.core.IAbstractTest;
-import com.zebrunner.carina.core.report.testrail.TestRailCases;
-import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
-import com.zebrunner.carina.core.registrar.tag.Priority;
-import com.zebrunner.carina.core.registrar.tag.TestPriority;
 
 /**
  * This sample shows how to use data-providers by TestNG approach.
@@ -34,7 +33,8 @@ public class DataProvidersSampleTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestRailCases(testCasesId = "44")
-    public void testMultiplyOperation(String TUID, String testRailColumn, int a, int b, int c) {
+    public void testMultiplyOperation(int aa, String TUID, String testRailColumn, int a, int b, int c) {
+        System.out.println(aa + " " + TUID + " " + testRailColumn + " " + a + " " + b + " " + c);
         setCases(testRailColumn.split(","));
         int actual = a * b;
         int expected = c;

@@ -7,14 +7,15 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooCryptoQuotePage extends YahooCryptoQuotePageBase {
 
-    @FindBy(xpath = "//*[@id=\"quote-header-info\"]//h1")
+    @FindBy(xpath = ".//div[@id=\"quote-header-info\"]//h1")
     private ExtendedWebElement name;
 
-    @FindBy(xpath = "//*[@id='quote-summary']//td[@data-test='START_DATE-value']")
+    @FindBy(xpath = ".//div[@id='quote-summary']//td[@data-test='START_DATE-value']")
     private ExtendedWebElement date;
 
-    public YahooCryptoQuotePage(WebDriver driver) {
+    public YahooCryptoQuotePage(WebDriver driver, String ticker) {
         super(driver);
+        setPageAbsoluteURL("https://finance.yahoo.com/quote/" + ticker + "?p=" + ticker);
     }
 
     @Override

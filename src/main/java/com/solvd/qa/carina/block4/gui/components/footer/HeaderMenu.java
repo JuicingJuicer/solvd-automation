@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class HeaderMenu extends HeaderMenuBase {
 
-    @FindBy(xpath = "//*[@id=\"ybar-topnavigation\"]/ul/li[6]//a")
+    @FindBy(xpath = ".//*[@id=\"ybar-topnavigation\"]/ul/li[6]//a")
     private ExtendedWebElement entertainnmentLink;
 
-    @FindBy(xpath = "//*[@id=\"ybar-topnavigation\"]/ul/li[7]//a")
+    @FindBy(xpath = ".//*[@id=\"ybar-topnavigation\"]/ul/li[7]//a")
     private ExtendedWebElement lifeLink;
 
     public HeaderMenu(WebDriver driver, SearchContext searchContext) {

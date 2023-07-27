@@ -5,10 +5,12 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class YahooInternationalPage extends YahooInternationalPageBase {
 
-    @FindBy(xpath = "//*[@id=\"Col1-0-World-Proxy\"]//*[contains (text(), 'France')]")
-    private ExtendedWebElement franceLink;
+    @FindBy(xpath = ".//div[@id=\"Col1-0-World-Proxy\"]//a")
+    private List<ExtendedWebElement> countries;
 
     public YahooInternationalPage(WebDriver driver) {
         super(driver);
@@ -16,8 +18,14 @@ public class YahooInternationalPage extends YahooInternationalPageBase {
     }
 
     @Override
-    public YahooFranceHomePage openFrancePage() {
-        franceLink.click();
-        return new YahooFranceHomePage(driver);
+    public YahooCountryHomePage selectCountry(String name, String link) {
+        for (ExtendedWebElement country : countries) {
+            if (country.getText().equals(name)) {
+                country.scrollTo();
+                country.click();
+                return new YahooCountryHomePage(driver, link);
+            }
+        }
+        return null;
     }
 }

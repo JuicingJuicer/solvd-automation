@@ -10,10 +10,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooLifePage extends YahooLifePageBase {
 
-    @FindBy(xpath = "//*[@id=\"ybar-inner-wrap\"]/div[1]")
+    @FindBy(xpath = ".//div[@id=\"ybar-inner-wrap\"]/div[1]")
     private HeaderMenu headerMenu;
 
-    @FindBy(xpath = "//*[@id=\"module-horoscope\"]/div")
+    @FindBy(xpath = ".//div[@id=\"module-horoscope\"]/div")
     private HoroscopeMenu horoscopeMenu;
 
     public YahooLifePage(WebDriver driver) {

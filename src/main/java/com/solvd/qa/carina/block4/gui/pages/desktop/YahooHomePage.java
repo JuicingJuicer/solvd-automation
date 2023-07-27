@@ -7,26 +7,25 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooHomePage extends YahooHomePageBase {
 
-    @FindBy(xpath = "//div[@class='weather-card-content Pos(r)']/a")
+    @FindBy(xpath = ".//div[@class='weather-card-content Pos(r)']/a")
     private ExtendedWebElement seeMoreWeatherButton;
 
     @FindBy(xpath = ".//div[@id='module-weather']//h4")
     private ExtendedWebElement weatherCity;
 
-    @FindBy(xpath = "//div[@id='ybar-search-box-container']//input[@type='text']")
+    @FindBy(xpath = ".//div[@id='ybar-search-box-container']//input[@type='text']")
     private ExtendedWebElement searchBar;
 
-    @FindBy(xpath = "//div[@id='ybar-search-box-container']//button[@type='submit']")
+    @FindBy(xpath = ".//div[@id='ybar-search-box-container']//button[@type='submit']")
     private ExtendedWebElement searchButton;
 
-    @FindBy(xpath = "//a[@id=\"root_8\"]")
+    @FindBy(xpath = ".//a[@id=\"root_8\"]")
     private ExtendedWebElement productServiceLink;
 
-    @FindBy(xpath = "//*[@id=\"root_3\"]")
+    @FindBy(xpath = ".//a[@id=\"root_3\"]")
     private ExtendedWebElement financeLink;
 
-    //*[@id="root_5"]
-    @FindBy(xpath = "//*[@id=\"root_5\"]")
+    @FindBy(xpath = ".//a[@id=\"root_5\"]")
     private ExtendedWebElement entertainmentLink;
 
     public YahooHomePage(WebDriver driver) {
@@ -52,9 +51,9 @@ public class YahooHomePage extends YahooHomePageBase {
     }
 
     @Override
-    public YahooMovieSearchPage searchMovie(String search) {
-        search(search);
-        return new YahooMovieSearchPage(driver);
+    public YahooMovieSearchPage searchMovie(String prompt, String link) {
+        search(prompt);
+        return new YahooMovieSearchPage(driver, link);
     }
 
     @Override

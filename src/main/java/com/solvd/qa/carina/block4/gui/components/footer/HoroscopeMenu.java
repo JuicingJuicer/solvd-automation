@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class HoroscopeMenu extends HoroscopeMenuBase {
 
-    @FindBy(xpath = "//*[@id=\"horoscope-select\"]//option[@selected]")
+    @FindBy(xpath = ".//*[@id=\"horoscope-select\"]//option[@selected]")
     private ExtendedWebElement selectedHoroscope;
 
     public HoroscopeMenu(WebDriver driver, SearchContext searchContext) {

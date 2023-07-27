@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooFinancePage extends YahooFinancePageBase {
 
-    @FindBy(xpath = "//*[@id=\"Nav-0-DesktopNav-0-DesktopNav\"]//li[9]/a")
+    @FindBy(xpath = ".//div[@id=\"Nav-0-DesktopNav-0-DesktopNav\"]//li[9]/a")
     private ExtendedWebElement cryptoLink;
 
-    @FindBy(xpath = "//*[@id=\"myLightboxContainer\"]/button")
+    @FindBy(xpath = ".//div[@id=\"myLightboxContainer\"]/button")
     private ExtendedWebElement popUpClose;
 
     public YahooFinancePage(WebDriver driver) {

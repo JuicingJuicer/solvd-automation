@@ -7,11 +7,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooWeatherPage extends YahooWeatherPageBase {
 
-    @FindBy(xpath = "//div[@id='module-location-heading']//h1")
+    @FindBy(xpath = ".//div[@id='module-location-heading']//h1")
     private ExtendedWebElement city;
 
     public YahooWeatherPage(WebDriver driver) {
         super(driver);
+        setPageURL("/news/weather/forecast/12797623");
     }
 
     @Override

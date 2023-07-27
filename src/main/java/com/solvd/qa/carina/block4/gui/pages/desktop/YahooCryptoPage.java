@@ -9,7 +9,7 @@ import java.util.List;
 
 public class YahooCryptoPage extends YahooCryptoPageBase {
 
-    @FindBy(xpath = "//*[@id='YDC-Lead']//a[@data-test]")
+    @FindBy(xpath = ".//div[@id='YDC-Lead']//a[@data-test]")
     private List<ExtendedWebElement> cryptocurrencies;
 
     public YahooCryptoPage(WebDriver driver) {
@@ -22,7 +22,7 @@ public class YahooCryptoPage extends YahooCryptoPageBase {
         for (ExtendedWebElement item : cryptocurrencies) {
             if (item.getText().equals(name)) {
                 item.click();
-                return new YahooCryptoQuotePage(driver);
+                return new YahooCryptoQuotePage(driver, name);
             }
         }
         return null;

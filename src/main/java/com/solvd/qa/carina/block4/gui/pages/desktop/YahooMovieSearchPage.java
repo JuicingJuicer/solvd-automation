@@ -7,23 +7,24 @@ import org.openqa.selenium.support.FindBy;
 
 public class YahooMovieSearchPage extends YahooMovieSearchPageBase {
 
-    @FindBy(xpath = "//h4[@class='text-module u-strong ']")
+    @FindBy(xpath = ".//h4[@class='text-module u-strong ']")
     private ExtendedWebElement title;
 
-    @FindBy(xpath = "//li[@class='mb-12'][1]")
+    @FindBy(xpath = ".//li[@class='mb-12'][1]")
     private ExtendedWebElement releaseDate;
 
-    @FindBy(xpath = "//li[@class='mb-12'][2]/a")
+    @FindBy(xpath = ".//li[@class='mb-12'][2]/a")
     private ExtendedWebElement director;
 
-    @FindBy(xpath = "//a[@id='yucs-apps_button']")
+    @FindBy(xpath = ".//a[@id='yucs-apps_button']")
     private ExtendedWebElement yahooSites;
 
-    @FindBy(xpath = "//span[@class='uha-ico uha-home']")
+    @FindBy(xpath = ".//span[@class='uha-ico uha-home']")
     private ExtendedWebElement homeButton;
 
-    public YahooMovieSearchPage(WebDriver driver) {
+    public YahooMovieSearchPage(WebDriver driver, String link) {
         super(driver);
+        setPageAbsoluteURL(link);
     }
 
     @Override

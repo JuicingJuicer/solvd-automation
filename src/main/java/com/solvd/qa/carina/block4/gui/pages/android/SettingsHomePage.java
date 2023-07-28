@@ -3,6 +3,7 @@ package com.solvd.qa.carina.block4.gui.pages.android;
 import com.solvd.qa.carina.block4.gui.pages.common.SettingsHomePageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -23,11 +24,8 @@ public class SettingsHomePage extends SettingsHomePageBase {
 
     public SettingsHomePage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public boolean isPageOpened() {
-        return settingsHomeTitle.isElementPresent();
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(settingsHomeTitle);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.solvd.qa.carina.block4.gui.pages.android;
 import com.solvd.qa.carina.block4.gui.pages.common.SearchPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,15 +17,11 @@ public class SearchPage extends SearchPageBase {
 
     public SearchPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public boolean isPageOpened() {
-        return searchBar.isElementPresent();
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(searchBar);
     }
 
     public void search(String text) {
-        searchBar.click();
         searchBar.type(text);
         result.click();
     }

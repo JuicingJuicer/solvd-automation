@@ -2,6 +2,7 @@ package com.solvd.qa.carina.block4.gui.pages.android;
 
 import com.solvd.qa.carina.block4.gui.pages.common.BatterySaverPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,11 +15,8 @@ public class BatterySaverPage extends BatterySaverPageBase {
 
     public BatterySaverPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public boolean isPageOpened() {
-        return backButton.isElementPresent();
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(backButton);
     }
 
     @Override

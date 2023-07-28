@@ -3,6 +3,7 @@ package com.solvd.qa.carina.block4.gui.pages.android;
 import com.solvd.qa.carina.block4.gui.pages.common.FlashNotificationsPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -25,11 +26,8 @@ public class FlashNotificationsPage extends FlashNotificationsPageBase {
 
     public FlashNotificationsPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Override
-    public boolean isPageOpened() {
-        return screenFlash.isElementPresent();
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(screenFlash);
     }
 
     @Override
@@ -47,7 +45,6 @@ public class FlashNotificationsPage extends FlashNotificationsPageBase {
         for (ExtendedWebElement color : colors) {
             if (color.getAttribute("content-desc").equals(choice)) {
                 color.click();
-                done.click();
                 break;
             }
         }

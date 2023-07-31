@@ -8,9 +8,15 @@ public abstract class SettingsHomePageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void clickAccessibility();
+    public abstract void clickSystem();
 
     public abstract void clickSearchBar();
 
     public abstract void clickBattery();
+
+    public abstract void clickNetwork();
+
+    public abstract void clickStorage();
+
+    public abstract double readStorageSubheaderSize();
 }

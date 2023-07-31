@@ -26,7 +26,7 @@ public class BatteryPage extends BatteryPageBase {
 
     @Override
     public void percentSwitchOn() {
-        if (percentSwitch.getAttribute("checked").equals("false")) {
+        if (!percentSwitch.isChecked()) {
             percentSwitch.click();
         }
     }

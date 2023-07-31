@@ -21,7 +21,7 @@ public class BatterySaverPage extends BatterySaverPageBase {
 
     @Override
     public void saverSwitchOn() {
-        if (saverSwitch.getAttribute("checked").equals("false")) {
+        if (!saverSwitch.isChecked()) {
             saverSwitch.click();
         }
     }

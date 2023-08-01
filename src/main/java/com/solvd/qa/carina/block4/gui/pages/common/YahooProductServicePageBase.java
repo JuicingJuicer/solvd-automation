@@ -9,5 +9,5 @@ public abstract class YahooProductServicePageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract YahooInternationalPageBase openInternationalPage();
+    public abstract void clickChooseCountry();
 }

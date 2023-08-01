@@ -8,5 +8,5 @@ public abstract class YahooFinancePageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract YahooCryptoPageBase openCrypto();
+    public abstract void clickCrypto();
 }

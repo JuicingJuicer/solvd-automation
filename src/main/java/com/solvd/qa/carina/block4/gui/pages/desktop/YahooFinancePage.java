@@ -20,8 +20,7 @@ public class YahooFinancePage extends YahooFinancePageBase {
     }
 
     @Override
-    public YahooCryptoPage openCrypto() {
+    public void clickCrypto() {
         cryptoLink.click();
-        return new YahooCryptoPage(driver);
     }
 }

@@ -8,7 +8,7 @@ public abstract class YahooHomePageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract YahooWeatherPageBase openWeather();
+    public abstract void clickSeeMore();
 
     public abstract String getWeatherCity();
 
@@ -16,9 +16,9 @@ public abstract class YahooHomePageBase extends AbstractPage {
 
     public abstract YahooMovieSearchPageBase searchMovie(String prompt, String link);
 
-    public abstract YahooProductServicePageBase openProductService();
+    public abstract void clickProductService();
 
-    public abstract YahooFinancePageBase openFinance();
+    public abstract void clickFinance();
 
-    public abstract YahooEntertainmentPageBase openEntertainment();
+    public abstract void clickEntertainment();
 }

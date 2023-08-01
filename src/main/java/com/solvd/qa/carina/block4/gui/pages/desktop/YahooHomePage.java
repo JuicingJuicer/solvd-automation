@@ -33,9 +33,8 @@ public class YahooHomePage extends YahooHomePageBase {
     }
 
     @Override
-    public YahooWeatherPage openWeather() {
+    public void clickSeeMore() {
         seeMoreWeatherButton.click();
-        return new YahooWeatherPage(driver);
     }
 
     @Override
@@ -57,20 +56,17 @@ public class YahooHomePage extends YahooHomePageBase {
     }
 
     @Override
-    public YahooProductServicePage openProductService() {
+    public void clickProductService() {
         productServiceLink.click();
-        return new YahooProductServicePage(driver);
     }
 
     @Override
-    public YahooFinancePage openFinance() {
+    public void clickFinance() {
         financeLink.click();
-        return new YahooFinancePage(driver);
     }
 
     @Override
-    public YahooEntertainmentPage openEntertainment() {
+    public void clickEntertainment() {
         entertainmentLink.click();
-        return new YahooEntertainmentPage(driver);
     }
 }

@@ -16,9 +16,8 @@ public class YahooProductServicePage extends YahooProductServicePageBase {
     }
 
     @Override
-    public YahooInternationalPage openInternationalPage() {
+    public void clickChooseCountry() {
         chooseCountryLink.scrollTo();
         chooseCountryLink.click();
-        return new YahooInternationalPage(driver);
     }
 }

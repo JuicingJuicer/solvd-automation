@@ -1,6 +1,7 @@
 package com.solvd.qa.carina.block4;
 
 import com.solvd.qa.carina.block4.gui.pages.common.*;
+import com.solvd.qa.carina.demo.utils.HoursUtils;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.dataprovider.IAbstractDataProvider;
 import com.zebrunner.carina.dataprovider.annotations.XlsDataSourceParameters;
@@ -127,7 +128,7 @@ public class AndroidTest implements IAbstractTest, IAbstractDataProvider {
         Assert.assertTrue(dateAndTimePage3.isPageOpened(), "Date and time page isn't opened");
 
         // verify if west to east time zone match time difference
-        Assert.assertEquals(dateAndTimePage3.addHoursCheck(hours, 3), dateAndTimePage3.readTimeHours(), "Time is wrong");
+        Assert.assertEquals(HoursUtils.addHoursCheck(hours, 3), dateAndTimePage3.readTimeHours(), "Time is wrong");
     }
 
     @Test
@@ -145,6 +146,6 @@ public class AndroidTest implements IAbstractTest, IAbstractDataProvider {
         Assert.assertTrue(storagePage.isPageOpened(), "Storage page isn't opened");
 
         // verify available storage by comparing the difference between storage size total and storage size used
-        Assert.assertEquals(availableStorage, (storagePage.readStorageSizeTotal() - storagePage.readStorageSizeUsed()), "Available storage is wrong");
+        Assert.assertEquals(Math.round(availableStorage * 10.0) / 10.0, (storagePage.readStorageSizeTotal() - storagePage.readStorageSizeUsed()), "Available storage is wrong");
     }
 }
